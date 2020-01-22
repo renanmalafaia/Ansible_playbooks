@@ -1,6 +1,6 @@
 ---
 - name: Deploy VM on RHV
-  hosts: localhost
+  hosts:  p-br-sp-spo-ctp-rhvm-01.rhhi-vivo.com.br
   gather_facts: false
   connection: local
   tasks:
