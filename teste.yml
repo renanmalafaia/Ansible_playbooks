@@ -1,3 +1,4 @@
+---
 - name: Creates a new Virtual Machine from template
   ovirt_vms:
     state: present
