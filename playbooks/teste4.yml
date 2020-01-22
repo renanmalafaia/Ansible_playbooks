@@ -1,29 +1,21 @@
 ---
 - hosts: localhost
-  connection: local
-  vars: 
-    manageiq_user: admin
-  vars_prompt:
-    - name: "manageiq_url" 
-    - name: "ocp_auth_key"
-    - name: "manageiq_password"
   tasks:
-  - name: Create a new provider in ManageIQ ('Hawkular' metrics)
-    manageiq_provider:
-      name: 'OpenShift'
-      type: 'Openshift'
-      provider:
-        auth_key: "{{ ocp_auth_key }}"
-        hostname: 'ose.example.com'
-        port: 8443
-        verify_ssl: False
-      metrics:
-        role: 'hawkular'
-        hostname: 'hawkular-metrics.example.com'
-        port: 443
-        verify_ssl: False
-      manageiq_connection:
-        url: "{{ manageiq_url }}"
-        username: "{{ manageiq_user }}"
-        password: "{{ manageiq_password }}" 
-        verify_ssl: False
+- name: Creates a new Virtual Machine from template
+  ovirt_vm:
+    state: present
+    name: teste_numa
+    template: cf_template
+    cluster: CTP
+    id: 63fc2107-877e-4791-8455-b925b4f3e905
+    numa_tune_mode: "interleave"
+    numa_nodes:
+    - index: 0
+      cores: [0]
+      memory: 20
+      numa_node_pins: [0]
+    cpu_pinning:
+    - cpu: 0
+      vcpu: 0
+    - cpu: 1
+      vcpu: 1 
