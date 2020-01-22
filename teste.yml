@@ -5,7 +5,6 @@
     name: teste_numa
     template: cf_template
     cluster: CTP
-    id: 63fc2107-877e-4791-8455-b925b4f3e905
     numa_tune_mode: "interleave"
     numa_nodes:
     - index: 0
