@@ -12,8 +12,4 @@
       cores: [0]
       memory: 20
       numa_node_pins: [0]
-    cpu_pinning:
-    - cpu: 0
-      vcpu: 0
-    - cpu: 1
-      vcpu: 1 
+    
