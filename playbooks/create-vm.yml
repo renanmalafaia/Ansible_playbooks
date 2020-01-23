@@ -28,6 +28,7 @@
       cluster: "{{ cluster }}"
       high_availability: true
       state: present
+      id: 63fc2107-877e-4791-8455-b925b4f3e905
       wait: yes
     
   post_tasks:
