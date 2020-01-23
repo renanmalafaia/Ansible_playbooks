@@ -16,7 +16,7 @@
   vars:
     datacenter: VM
     cluster: VM
-    template: cf_template
+    template: RRB-Template
     vm_name: test-cf-pinning
     host: p-br-sp-spo-vm-rhhi-01
   
