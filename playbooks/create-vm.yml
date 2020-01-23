@@ -38,10 +38,6 @@
         cores: [0]
         memory: 20
         numa_node_pins: [0]
-      - index: 1
-        cores: [1]
-        memory: 30
-        numa_node_pins: [1]
       cpu_mode: host_passthrough
       wait: yes
       
