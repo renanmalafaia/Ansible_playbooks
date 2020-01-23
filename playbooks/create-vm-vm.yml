@@ -1,0 +1,60 @@
+---
+- name: Create VM on RHV
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  pre_tasks:
+  - name: Login to oVirt
+    ovirt_auth:
+      url: https://p-br-sp-spo-vm-rhvm-01.rhhi-vivo.com.br/ovirt-engine/api
+      username: admin@internal
+      password: vivo123@
+    tags:
+      - always
+      
+  vars:
+    datacenter: VM
+    cluster: VM
+    template: cf_template
+    vm_name: test-cf-pinning
+    host: p-br-sp-spo-vm-rhhi-01
+  
+  tasks:
+  - name: Create and run VM from template
+    ovirt_vm:
+      auth: "{{ ovirt_auth }}"
+      name: "{{ vm_name }}"
+      template: "{{ template }}"
+      cluster: "{{ cluster }}"
+      host: "{{ host }}"
+      high_availability: true
+      state: present
+      id: 63fc2107-877e-4791-8455-b925b4f3e905
+      placement_policy: pinned
+      numa_tune_mode: "interleave"
+      numa_nodes:
+      - index: 0
+        cores: [0]
+        memory: 20
+        numa_node_pins: [0]
+      cpu_mode: host_passthrough
+      cpu_pinning:
+      - cpu: 0
+        vcpu: 0
+      - cpu: 1
+        vcpu: 1
+      - cpu: 2
+        vcpu: 2
+      - cpu: 3
+        vcpu: 3
+      wait: yes
+      
+  
+  post_tasks:
+  - name: Logout from oVirt
+    ovirt_auth:
+      state: absent
+      ovirt_auth: "{{ ovirt_auth }}"
+    tags:
+      - always
