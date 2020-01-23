@@ -11,14 +11,14 @@
     rhvm_password: vivo123@
 
   pre_tasks:
-    - name: Login to oVirt
-      ovirt_auth:
-        hostname: "{{ rhvm_fqdn }}"
-        username: "{{ rhvm_user }}"
-        password: "{{ rhvm_password }}"
-        ca_file: "{{ rhvm_cafile | default(omit) }}"
-      tags:
-        - always
+  - name: Login to oVirt
+    ovirt_auth:
+      hostname: "{{ rhvm_fqdn }}"
+      username: "{{ rhvm_user }}"
+      password: "{{ rhvm_password }}"
+      ca_file: "{{ rhvm_cafile | default(omit) }}"
+    tags:
+      - always
       
   vars:
     datacenter: CTP
@@ -27,20 +27,20 @@
     vm_name: test-cf01
   
   tasks:
-    - name: Create and run VM from template
-      ovirt_vms:
-        auth: "{{ ovirt_auth }}"
-        name: "{{ vm_name }}"
-        template: "{{ template }}"
-        cluster: "{{ cluster }}"
-        high_availability: true
-        state: present
-        wait: yes
+  - name: Create and run VM from template
+    ovirt_vms:
+      auth: "{{ ovirt_auth }}"
+      name: "{{ vm_name }}"
+      template: "{{ template }}"
+      cluster: "{{ cluster }}"
+      high_availability: true
+      state: present
+      wait: yes
     
   post_tasks:
-    - name: Logout from oVirt
-      ovirt_auth:
-        state: absent
-        ovirt_auth: "{{ ovirt_auth }}"
+  - name: Logout from oVirt
+    ovirt_auth:
+      state: absent
+      ovirt_auth: "{{ ovirt_auth }}"
     tags:
       - always
