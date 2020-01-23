@@ -18,6 +18,7 @@
     cluster: CTP
     template: cf_template
     vm_name: test-cf02
+    host: p-br-sp-spo-ctp-rhhi-01
   
   tasks:
   - name: Create and run VM from template
@@ -26,6 +27,7 @@
       name: "{{ vm_name }}"
       template: "{{ template }}"
       cluster: "{{ cluster }}"
+      host: "{{ host }}"
       high_availability: true
       state: present
       id: 63fc2107-877e-4791-8455-b925b4f3e905
