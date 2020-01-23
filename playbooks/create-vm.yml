@@ -30,7 +30,18 @@
       state: present
       id: 63fc2107-877e-4791-8455-b925b4f3e905
       wait: yes
-    
+      numa_tune_mode: "interleave"
+      numa_nodes:
+      - index: 0
+        cores: [0]
+        memory: 20
+        numa_node_pins: [0]
+      cpu_pinning:
+      - cpu: 0
+        vcpu: 0
+      - cpu: 1
+        vcpu: 1 
+  
   post_tasks:
   - name: Logout from oVirt
     ovirt_auth:
