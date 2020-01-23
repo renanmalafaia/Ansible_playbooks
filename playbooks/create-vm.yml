@@ -42,6 +42,12 @@
       cpu_pinning:
       - cpu: 0
         vcpu: 0
+      - cpu: 1
+        vcpu: 1
+      - cpu: 2
+        vcpu: 2
+      - cpu: 3
+        vcpu: 3
       wait: yes
       
   
