@@ -10,7 +10,6 @@
       url: https://p-br-sp-spo-ctp-rhvm-01.rhhi-vivo.com.br/ovirt-engine/api
       username: admin@internal
       password: vivo123@
-      ca_file: /etc/pki/ovirt-engine/ca.pem
     tags:
       - always
       
