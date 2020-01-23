@@ -29,6 +29,8 @@
       high_availability: true
       state: present
       id: 63fc2107-877e-4791-8455-b925b4f3e905
+      cpu_mode: host_passthrough
+        - placement_policy: pinned
       wait: yes
       
   
