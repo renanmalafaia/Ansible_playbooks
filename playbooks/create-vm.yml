@@ -40,6 +40,7 @@
         memory: 30
         numa_node_pins: [1]
       cpu_mode: host_passthrough
+      placement_policy: pinned
       wait: yes
       
   
