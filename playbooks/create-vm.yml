@@ -17,7 +17,7 @@
     datacenter: CTP
     cluster: CTP
     template: cf_template
-    vm_name: test-cf01
+    vm_name: test-cf02
   
   tasks:
   - name: Create and run VM from template
