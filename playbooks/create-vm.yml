@@ -4,19 +4,13 @@
   connection: local
   gather_facts: false
 
-  vars:
-    rhvm_fqdn: p-br-sp-spo-ctp-rhvm-01.rhhi-vivo.com.br
-    rhvm_user: admin@internal
-    rhvm_cafile: /etc/pki/ovirt-engine/ca.pem
-    rhvm_password: vivo123@
-
   pre_tasks:
   - name: Login to oVirt
     ovirt_auth:
-      hostname: "{{ rhvm_fqdn }}"
-      username: "{{ rhvm_user }}"
-      password: "{{ rhvm_password }}"
-      ca_file: "{{ rhvm_cafile | default(omit) }}"
+      url: https://p-br-sp-spo-ctp-rhvm-01.rhhi-vivo.com.br/ovirt-engine/api
+      username: admin@internal
+      password: vivo123@
+      ca_file: /etc/pki/ovirt-engine/ca.pem
     tags:
       - always
       
